@@ -1,0 +1,15 @@
+
+git clone https://github.com/sille-zoska/snap-zoska.git
+cd snap-zoska
+git init
+git branch -m main
+git config user.name "sille-zoska"
+git config user.email "sille@zochova.sk"
+git remote add origin https://github.com/sille-zoska/snap-zoska.git
+git remote -v
+VsCode Source control -> Initial -> Commit -> Publish branch (Sync)
+
+
+
+
+
