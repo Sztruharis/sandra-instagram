@@ -24,7 +24,7 @@
 
 
 4. VsCode terminal:
-    npx prisma migrate dev --name init
+    npx prisma migrate dev --name user-profile-added
     npx prisma generate
     npx prisma studio
 
