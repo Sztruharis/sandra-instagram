@@ -1,6 +1,6 @@
 // src/app/page.tsx
 
-
+export const dynamic = 'force-dynamic';
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 import AuthHomeView from "@/sections/AuthHomeView";
