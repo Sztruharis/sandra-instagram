@@ -22,8 +22,8 @@ export default function SignInView() {
       sx={{
         display: "flex", // Use flexbox for layout
         flexDirection: "column", // Arrange children vertically
-        alignItems: "center", // Center-align children
-        mt: 5, // Add margin-top
+        alignItems: "center", // Center-align children horizontally
+        justifyContent: "center", // Center-align children vertically
         p: 3, // Add padding
         bgcolor: "background.paper", // Background color from theme
         boxShadow: 3, // Add a shadow effect
@@ -53,7 +53,7 @@ export default function SignInView() {
 
       {/* Button for signing in with GitHub */}
       <Button
-        variant="contained" // Solid button style
+        variant="outlined" // Solid button style
         fullWidth // Button spans the full width of the container
         startIcon={<GitHubIcon />} // Icon displayed at the start of the button
         onClick={() => {
@@ -62,11 +62,6 @@ export default function SignInView() {
         }}
         sx={{
           mb: 1, // Add margin-bottom
-          bgcolor: "#333", // Set GitHub-like dark background color
-          color: "white", // Set text color to white
-          "&:hover": {
-            bgcolor: "#444", // Darker background on hover
-          },
         }}
       >
         Prihlásiť sa pomocou GitHub

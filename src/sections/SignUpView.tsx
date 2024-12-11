@@ -65,7 +65,7 @@ export default function SignUpView() {
 
       {/* Button for signing up using GitHub */}
       <Button
-        variant="contained" // Solid button style
+        variant="outlined" // Solid button style
         fullWidth // Make the button span the full width of the container
         startIcon={<GitHubIcon />} // Display the GitHub icon at the start of the button
         onClick={() => {
@@ -74,11 +74,6 @@ export default function SignUpView() {
         }}
         sx={{
           mb: 1, // Add margin-bottom for spacing
-          bgcolor: "#333", // Set background color to a dark GitHub-like shade
-          color: "white", // Set text color to white
-          "&:hover": {
-            bgcolor: "#444", // Darker background shade on hover
-          },
         }}
       >
         Prihlásiť sa pomocou GitHub

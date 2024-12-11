@@ -24,15 +24,7 @@ export default function Navbar() {
   // Handle navigation based on selected path
   const handleNavigation = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue); // Update the current navigation value
-    if (newValue === "/auth/odhlasenie") {
-      // Handle logout action
-      signOut({
-        callbackUrl: "/", // Redirect to home page after signing out
-      });
-    } else {
-      // Navigate to the selected path
       router.push(newValue);
-    }
   };
 
   // Paths for users who are not authenticated
@@ -45,7 +37,7 @@ export default function Navbar() {
 
   // Paths for authenticated users
   const authPaths = [
-    { label: "Domov", value: "/", icon: <HomeIcon /> },
+    { label: "Domov", value: "/prispevok", icon: <HomeIcon /> },
     { label: "Hľadať", value: "/hladanie", icon: <SearchIcon /> },
     { label: "Pridať", value: "/pridat", icon: <AddCircleIcon /> },
     {
@@ -59,8 +51,7 @@ export default function Navbar() {
         <Avatar>{session?.user?.name?.charAt(0) || "U"}</Avatar>
       ),
     },
-    { label: "O mne", value: "/o-mne", icon: <InfoIcon /> },
-    {  label: "Odhlásenie", value: "/auth/odhlasenie", icon: <LogoutIcon /> }, // Correct path
+    {  label: "Odhlásenie", value: "/odhlasenie", icon: <LogoutIcon /> }, // Correct path
   ];
 
   // Determine the navigation paths based on the user's authentication status
