@@ -1,15 +1,16 @@
-// src/app/o-mne/page.tsx
+// Import Material-UI components for layout and text styling
+import Typography from "@mui/material/Typography"; // Component for displaying styled text
+import Container from "@mui/material/Container"; // Component for a responsive layout container
 
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+// Define metadata for the page (e.g., title for the document)
+export const metadata = { title: "O mne | SandraInstagram" };
 
-export const metadata = { title: "O mne | SandraInstagram" }
-
+// Main component for the "About" page
 export default function About() {
-
   return (
     <Container>
-        <Typography> Stale sa mi to nechce robit </Typography>
+      {/* Display placeholder text for the "About" section */}
+      <Typography> Táto stránka obsahuje informácie o mne! </Typography>
     </Container>
   );
 }

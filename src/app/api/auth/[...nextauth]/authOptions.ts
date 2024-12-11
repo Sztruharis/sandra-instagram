@@ -1,33 +1,39 @@
+// Import the required types and providers for NextAuth
+import { NextAuthOptions } from "next-auth"; // Type definition for configuring NextAuth
+import GoogleProvider from "next-auth/providers/google"; // Google provider for authentication
+import { PrismaAdapter } from "@auth/prisma-adapter"; // Adapter to integrate Prisma with NextAuth
+import { prisma } from "./prisma"; // Prisma client instance
 
-// src/app/api/auth/[...nextauth]/authOptions.ts
-
-import { NextAuthOptions } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
-import { PrismaAdapter } from "@auth/prisma-adapter"
-import { prisma } from "./prisma"
-
+// Export the NextAuth configuration options
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  // Configure the Prisma adapter for NextAuth
+  adapter: PrismaAdapter(prisma), // Connects NextAuth to the Prisma database
+
+  // Define authentication providers
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+      clientId: process.env.GOOGLE_CLIENT_ID || "", // Google Client ID from environment variables
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "", // Google Client Secret from environment variables
     }),
   ],
+
+  // Specify the secret used for NextAuth (e.g., signing tokens)
   secret: process.env.NEXTAUTH_SECRET,
-  debug: true, // Enable/disable detailed logging
+
+  // Enable detailed logging for debugging purposes (set to `false` in production)
+  debug: true,
+
+  // Configure custom pages for sign-in and sign-out flows
   pages: {
-    signIn: '/auth/prihlasenie',
-    signOut: '/auth/odhlasenie',
+    signIn: '/auth/prihlasenie', // Custom sign-in page
+    signOut: '/auth/odhlasenie', // Custom sign-out page
   },
+
+  // Define custom callback functions for NextAuth events
   callbacks: {
+    // Redirect callback to handle where the user should go after sign-in
     async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
-      // Redirect to home page after sign-in
-      return baseUrl || url; // baseUrl is automatically set from NEXTAUTH_URL in .env
+      return baseUrl || url; // Default to the base URL (NEXTAUTH_URL) or the provided URL
     },
   },
 };
-
-
-
-

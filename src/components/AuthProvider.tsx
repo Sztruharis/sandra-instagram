@@ -1,14 +1,16 @@
-// src/components/AuthProvider.tsx
-
+// Enable client-side rendering
 "use client";
 
-import React, { ReactNode } from 'react'
-import { SessionProvider } from 'next-auth/react'
+// Import necessary modules
+import React, { ReactNode } from "react"; // React for component creation and ReactNode type for children
+import { SessionProvider } from "next-auth/react"; // NextAuth provider for managing session state
 
+// AuthProvider component to wrap the application with NextAuth session management
 const AuthProvider = ({ children }: { children: ReactNode }) => {
   return (
+    // Wrap children components with SessionProvider to manage authentication sessions
     <SessionProvider>{children}</SessionProvider>
-  )
-}
+  );
+};
 
-export default AuthProvider
+export default AuthProvider;
