@@ -14,10 +14,10 @@ export default function AuthHomeView({ session }: { session: Session | null }) {
   return (
     <Container>
       {/* Informational text indicating the authenticated home page */}
-      <Typography>Domovská stránka - prihlásený user</Typography>
+      <Typography><h1>Domovská stránka - prihlásený user</h1></Typography>
       {/* Welcome message with user's name or a fallback */}
       <Typography variant="h4" sx={{ mb: 3 }}>
-        Vitajte, {session?.user?.name || "užívateľ"}!
+       Vitajte, {session?.user?.name || "užívateľ"}!
       </Typography>
     </Container>
   );

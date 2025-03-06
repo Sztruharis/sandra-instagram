@@ -1,16 +1,30 @@
-// Import Material-UI components for styling and layout
-import Typography from "@mui/material/Typography"; // For styled text
-import Container from "@mui/material/Container"; // For a responsive layout container
+// src/app/hladanie/page.tsx
 
-// Define metadata for the page (e.g., title for the document)
-export const metadata = { title: "Zoznam profilov | SandraInstagram" };
+import { Container } from "@mui/material";
+import SearchView from "@/sections/SearchView"; // Import the separated SearchView component
+import { prisma } from "@/app/api/auth/[...nextauth]/prisma";
 
-// Main component for the Profile List page
-export default function ProfileList() {
+export const metadata = { title: "Hľadanie | Sandra Instagram" };
+
+export default async function SearchPage() {
+  const users = await prisma.user.findMany({
+      select: {
+          id: true,
+          name: true,  // name can be null
+          image: true, // include image if needed
+      },
+  });
+
+  // Ensure 'name' is always a string (replace null with an empty string)
+  const formattedUsers = users.map(user => ({
+      id: user.id,
+      name: user.name ?? "Unknown User", // Replace null with default text
+      image: user.image ?? "", // Ensure image is a string
+  }));
+
   return (
-    <Container>
-      {/* Display a message or placeholder text */}
-      <Typography> Tu je zoznam profilov | nič </Typography>
-    </Container>
+      <Container>
+        <SearchView users={formattedUsers} />
+      </Container>
   );
 }
